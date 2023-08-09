@@ -25,9 +25,9 @@ void ViewWindow::setViewFrame(const QImage &newViewFrame)
 
 }
 
-void ViewWindow::open_Image(QString url)
+void ViewWindow::openImage(QString url)
 {
-    url.remove("file://");
+    url.remove("file:///");
     rawFrame = cv::imread(url.toStdString());
     convert2QImage();
 }

@@ -7,6 +7,8 @@
 #include "app_environment.h"
 #include "import_qml_components_plugins.h"
 #include "import_qml_plugins.h"
+#include <ViewWindow.h>
+
 
 int main(int argc, char *argv[])
 {
@@ -15,6 +17,8 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+
+    qmlRegisterType<ViewWindow>("com.MediaViewer.viewFrame",1,0,"ViewWindow");
     const QUrl url(u"qrc:Main/main.qml"_qs);
     QObject::connect(
         &engine, &QQmlApplicationEngine::objectCreated, &app,

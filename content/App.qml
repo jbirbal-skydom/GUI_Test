@@ -7,8 +7,8 @@ import QtQuick.Controls
 
 
 Window {
-    width: 640
-    height: 480
+    width: 720
+    height: 640
 
 
     visible: true

@@ -1,6 +1,9 @@
 import QtQuick 6.2
 import QtQuick.Controls
 import QtQuick.Layouts
+import com.MediaViewer.viewFrame
+import QtQuick.Dialogs
+
 
 Page {
     anchors.fill: parent
@@ -66,6 +69,13 @@ Page {
             Layout.preferredHeight: imageContainer.height
             fillMode: Image.PreserveAspectFit
         }
+
+        ViewWindow{
+            id:selectImage
+            Layout.preferredWidth: imageContainer.width
+            Layout.preferredHeight: imageContainer.height
+            visible: false
+        }
     }
 
     RowLayout{
@@ -79,6 +89,7 @@ Page {
         Button{
             text: "Open Image"
             Layout.preferredWidth: parent.width*0.4
+            onClicked: imageDialog.open()
         }
         Button{
             text: "Go Back"
@@ -88,6 +99,18 @@ Page {
 
     }
 
+    FileDialog{
+        id: imageDialog
+        title: "Choose Image"
+        onAccepted: {
+
+            console.log( imageDialog.selectedFile)
+            selectImage.openImage(imageDialog.selectedFile);
+            picture.visible = false;
+            selectImage.visible = true;
+        }
+
+    }
 }
 
 

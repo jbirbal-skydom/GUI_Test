@@ -33,7 +33,7 @@ public:
     QImage getViewFrame() const;
     void setViewFrame(const QImage &newViewFrame);
 
-    Q_INVOKABLE void open_Image(QString url);
+    Q_INVOKABLE void openImage(QString url);
 
 signals:
     void frameChanged();

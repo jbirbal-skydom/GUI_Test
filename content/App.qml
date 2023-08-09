@@ -3,17 +3,27 @@
 
 import QtQuick 6.2
 import MediaViewer
+import QtQuick.Controls
+
 
 Window {
-    width: mainScreen.width
-    height: mainScreen.height
+    width: 640
+    height: 480
+
 
     visible: true
     title: "MediaViewer"
 
-    Screen01 {
-        id: mainScreen
+    StackView{
+    id: loader
+    anchors.fill: parent
+    initialItem: "home.qml"
+
     }
+
+    /*Screen01 {
+        id: mainScreen
+    }*/
 
 }
 

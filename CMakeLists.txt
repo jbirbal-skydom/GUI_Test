@@ -18,7 +18,7 @@ if (Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
 endif()
 
 qt_add_executable(MediaViewerApp src/main.cpp
-    ViewFrame.h ViewFrame.cpp)
+    ViewWindow.h ViewWindow.cpp)
 
 qt_add_resources(MediaViewerApp "configuration"
     PREFIX "/"

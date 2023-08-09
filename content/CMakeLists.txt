@@ -10,4 +10,9 @@ qt6_add_qml_module(content
         Screen01.ui.qml
     RESOURCES
         fonts/fonts.txt
+        QML_FILES home.qml
+        QML_FILES showImage.qml
+        QML_FILES showVideo.qml
+        800px-OpenCV_Logo_with_text_svg_version.svg.png
+
 )

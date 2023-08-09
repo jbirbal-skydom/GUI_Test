@@ -8,12 +8,16 @@ project(GUI_MingwApp LANGUAGES CXX)
 set(CMAKE_AUTOMOC ON)
 
 find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick)
+find_package(OpenCV REQUIRED)
+include_directories( ${OpenCV_INCLUDE_DIRS} )
+
 
 if (Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
     qt_standard_project_setup()
 endif()
 
-qt_add_executable(GUI_MingwApp src/main.cpp)
+qt_add_executable(GUI_MingwApp src/main.cpp
+    viewframe.h viewframe.cpp)
 
 qt_add_resources(GUI_MingwApp "configuration"
     PREFIX "/"
@@ -26,6 +30,7 @@ target_link_libraries(GUI_MingwApp PRIVATE
     Qt6::Gui
     Qt6::Qml
     Qt6::Quick
+    ${OpenCV_LIBS}
 )
 
 if (BUILD_QDS_COMPONENTS)

@@ -33,6 +33,12 @@ target_link_libraries(GUI_MingwApp PRIVATE
     ${OpenCV_LIBS}
 )
 
+
+
+target_include_directories(GUI_MingwApp PUBLIC ${OpenCV_INCLUDE_DIRS})
+
+
+
 if (BUILD_QDS_COMPONENTS)
     include(${CMAKE_CURRENT_SOURCE_DIR}/qmlcomponents)
 endif()

@@ -1,4 +1,5 @@
 #include "ViewWindow.h"
+#include <QUrl>
 
 cv::Mat ViewWindow::getRawFrame() const
 {
@@ -25,10 +26,11 @@ void ViewWindow::setViewFrame(const QImage &newViewFrame)
 
 }
 
-void ViewWindow::openImage(QString url)
+void ViewWindow::openImage(QUrl url)
 {
-    url.remove("file:///");
-    rawFrame = cv::imread(url.toStdString());
+    QString myurl = url.toLocalFile();
+    //qDebug() << myurl;
+    rawFrame = cv::imread(myurl.toStdString());
     convert2QImage();
 }
 

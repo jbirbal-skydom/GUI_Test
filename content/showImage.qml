@@ -103,8 +103,7 @@ Page {
         id: imageDialog
         title: "Choose Image"
         onAccepted: {
-
-            console.log( imageDialog.selectedFile)
+            //console.log(imageDialog.selectedFile)
             selectImage.openImage(imageDialog.selectedFile);
             picture.visible = false;
             selectImage.visible = true;

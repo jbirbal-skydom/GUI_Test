@@ -12,6 +12,8 @@
 #include <opencv2/highgui.hpp>
 #include<opencv2/core/mat.hpp>
 
+using namespace cv;
+
 class ViewWindow : public QQuickPaintedItem
 {
 
@@ -28,8 +30,8 @@ public:
 
     void paint(QPainter *painter);
 
-    cv::Mat getRawFrame() const;
-    Q_INVOKABLE void setRawFrame(const cv::Mat &newRawFrame);
+    Mat getRawFrame() const;
+    Q_INVOKABLE void setRawFrame(const Mat &newRawFrame);
     QImage getViewFrame() const;
     void setViewFrame(const QImage &newViewFrame);
 

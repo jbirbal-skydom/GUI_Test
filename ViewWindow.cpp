@@ -6,7 +6,7 @@ cv::Mat ViewWindow::getRawFrame() const
     return rawFrame;
 }
 
-void ViewWindow::setRawFrame(const cv::Mat &newRawFrame)
+void ViewWindow::setRawFrame(const Mat &newRawFrame)
 {
     rawFrame = newRawFrame;
     convert2QImage();
@@ -52,6 +52,6 @@ ViewWindow::ViewWindow(QQuickItem *parent) : QQuickPaintedItem(parent)
 
 void ViewWindow::paint(QPainter *painter)
 {
-    viewFrame.scaled(640,480, Qt::IgnoreAspectRatio, Qt::FastTransformation);
+    //viewFrame.scaled(640,480, Qt::IgnoreAspectRatio, Qt::FastTransformation);
     painter->drawImage(0,0, viewFrame, 0,0, -1,-1, Qt::AutoColor);
 }

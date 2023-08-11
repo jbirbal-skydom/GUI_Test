@@ -9,6 +9,10 @@
 #include "import_qml_plugins.h"
 #include <ViewWindow.h>
 
+#include <QQmlContext>
+#include <QQmlComponent>
+#include "threadmanager.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -18,7 +22,20 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    qmlRegisterType<ViewWindow>("com.MediaViewer.viewFrame",1,0,"ViewWindow");
+    threadManager videoThread;
+
+    qmlRegisterType<ViewWindow>("com.MediaViewer.viewFrame",1,0,"ViewWindow"); //render something
+
+
+    qRegisterMetaType<cv::Mat>("Mat");
+
+    engine.rootContext()->setContextProperty("videoThread", &videoThread);
+
+
+
+
+
+
     const QUrl url(u"qrc:Main/main.qml"_qs);
     QObject::connect(
         &engine, &QQmlApplicationEngine::objectCreated, &app,

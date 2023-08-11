@@ -18,7 +18,9 @@ if (Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
 endif()
 
 qt_add_executable(MediaViewerApp src/main.cpp
-    ViewWindow.h ViewWindow.cpp)
+    ViewWindow.h ViewWindow.cpp
+    filecapture.h filecapture.cpp
+    threadmanager.h threadmanager.cpp)
 
 qt_add_resources(MediaViewerApp "configuration"
     PREFIX "/"

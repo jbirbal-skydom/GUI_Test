@@ -12,6 +12,13 @@ Page {
         target: videoThread
         onUpdateView: selectImage.setRawFrame(vFrame);
     }
+    Connections{
+        target: videoThread
+        onDoneView: {
+            picture.visible = true;
+            selectImage.visible = false;
+        }
+    }
 
     Rectangle {
         id: bar

@@ -8,6 +8,12 @@
 #include <opencv2/highgui.hpp>
 #include<opencv2/core/mat.hpp>
 
+#include <QUrl>
+#include <qdebug.h>
+#include <iostream>
+#include <QThread>
+
+
 using namespace cv;
 
 
@@ -27,10 +33,13 @@ public:
 
 signals:
     void newFrameCapture (Mat rawFrame);
+    void completedVideo ();
+
 
 public slots:
 
-    bool openVideo();
+    void openVideo();
+
 
 
 };

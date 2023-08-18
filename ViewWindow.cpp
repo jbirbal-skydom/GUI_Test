@@ -55,3 +55,14 @@ void ViewWindow::paint(QPainter *painter)
     //viewFrame.scaled(640,480, Qt::IgnoreAspectRatio, Qt::FastTransformation);
     painter->drawImage(0,0, viewFrame, 0,0, -1,-1, Qt::AutoColor);
 }
+
+bool ViewWindow::smoothImage() {
+    if(!rawFrame.empty()){
+        Mat temp;
+        GaussianBlur(rawFrame, temp, Size (31,31), 0, 0);
+        setRawFrame(temp);
+        return true;
+
+    }
+    return false;
+}

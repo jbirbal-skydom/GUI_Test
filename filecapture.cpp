@@ -1,6 +1,4 @@
 #include "filecapture.h"
-#include <QUrl>
-#include <qdebug.h>
 
 FileCapture::FileCapture(QObject *parent): QObject{parent}
 {
@@ -9,22 +7,52 @@ FileCapture::FileCapture(QObject *parent): QObject{parent}
 }
 
 
-bool FileCapture::openVideo()
+void FileCapture::openVideo()
 {
     Mat rawFrame;
     videoCaptured = new VideoCapture;
-    qDebug() << url;
+    // qDebug() << url;
     videoCaptured->open(url.toStdString());
     if(!videoCaptured->isOpened()){
-        return false;
+        std::cout<<"not opened" << std::endl;
     }
+    int i = 0;
+    std::cout<< "opened" << std::endl;
+
 
     while(videoCaptured->read(rawFrame) && !stopVideo){
+        i++;
+        std::cout<<i<<" seconds " << this << std::endl;
+        QThread::sleep(1);
         emit(newFrameCapture(rawFrame));
+
+
     }
+    std::cout << "deleting object"  << std::endl;
+    videoCaptured->release();
+
+
+    delete videoCaptured;
+    emit(completedVideo());
+
+
+
+
 
 
 }
+
+
+
+//void FileCapture::completedVideo()
+//{
+
+//    std::cout << "completed"  << std::endl;
+
+
+
+
+//}
 
 
 void FileCapture::setUrl(QString &newUrl)

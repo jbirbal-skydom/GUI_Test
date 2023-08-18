@@ -22,14 +22,14 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    threadManager videoThread;
+    threadManager videoThrd;
 
     qmlRegisterType<ViewWindow>("com.MediaViewer.viewFrame",1,0,"ViewWindow"); //render something
 
 
     qRegisterMetaType<cv::Mat>("Mat");
 
-    engine.rootContext()->setContextProperty("videoThread", &videoThread);
+    engine.rootContext()->setContextProperty("videoThread", &videoThrd); //access function
 
 
 

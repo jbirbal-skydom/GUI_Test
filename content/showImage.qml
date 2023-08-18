@@ -4,112 +4,130 @@ import QtQuick.Layouts
 import com.MediaViewer.viewFrame
 import QtQuick.Dialogs
 
-
 Page {
     anchors.fill: parent
 
     Rectangle {
         id: bar
+
+        color: "orange"
+        height: parent.height * 0.1
+        width: parent.width
         x: 0
         y: 20
-        width: parent.width
-        height: parent.height * 0.1
-        color: "orange"
 
         Label {
-            text: "Show Image"
-            color: "white"
             anchors.centerIn: parent
+            color: "white"
+            text: "Show Image"
         }
     }
-
     ToolBar {
         id: toolBar
+
+        height: 21
+        width: 640
         x: 0
         y: 0
-        width: 640
-        height: 21
     }
-
     ToolSeparator {
         id: toolSeparator
+
+        height: 21
+        width: 25
         x: 80
         y: 0
-        width: 25
-        height: 21
     }
-
     ToolButton {
         id: toolButton
-        x: 6
-        y: 3
-        width: 83
+
         height: 15
         text: qsTr("File")
+        width: 83
+        x: 6
+        y: 3
     }
-
-
-
-    ColumnLayout{
+    ColumnLayout {
         id: imageContainer
-        width: 640
-        height: 480
-
-        anchors.top: bar.bottom
-        anchors.horizontalCenterOffset: 0
-        anchors.topMargin: 21
         anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenterOffset: 0
+        anchors.top: bar.bottom
+        anchors.topMargin: 21
+        height: parent.height * 0.5
+        width: parent.width * 0.5
 
         Image {
             id: picture
-            horizontalAlignment: Image.AlignHCenter
-            source: "800px-OpenCV_Logo_with_text_svg_version.svg.png"
-            scale: 0.495
-            Layout.preferredWidth: imageContainer.width
-            Layout.preferredHeight: imageContainer.height
-            fillMode: Image.PreserveAspectFit
-        }
 
-        ViewWindow{
-            id:selectImage
-            Layout.preferredWidth: imageContainer.width
             Layout.preferredHeight: imageContainer.height
+            Layout.preferredWidth: imageContainer.width
+            fillMode: Image.PreserveAspectFit
+            horizontalAlignment: Image.AlignHCenter
+            scale: 0.495
+            source: "800px-OpenCV_Logo_with_text_svg_version.svg.png"
+        }
+        ViewWindow {
+            id: selectImage
+
+            Layout.preferredHeight: imageContainer.height
+            Layout.preferredWidth: imageContainer.width
             visible: false
         }
     }
-
-    RowLayout{
-        anchors.top: imageContainer.bottom
-        anchors.horizontalCenterOffset: 0
-        anchors.topMargin: 11
+    RowLayout {
         anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenterOffset: 0
+        anchors.top: imageContainer.bottom
+        anchors.topMargin: 11
         width: parent.width * 0.6
-        spacing: width*0.2
 
-        Button{
+        Button {
             text: "Open Image"
-            Layout.preferredWidth: parent.width*0.4
             onClicked: imageDialog.open()
         }
-        Button{
-            text: "Go Back"
-            Layout.preferredWidth: parent.width*0.4
-            onClicked: loader.pop()
+
+        Button {
+            text: "Smoothing"
+            onClicked: {
+                if(!selectImage.smoothImage()){
+                    errorAlert.open()
+                }
+            }
         }
 
+        Button {
+            text: "Go Back"
+            onClicked: loader.pop()
+        }
     }
-
-    FileDialog{
+    FileDialog {
         id: imageDialog
+
         title: "Choose Image"
+
         onAccepted: {
             //console.log(imageDialog.selectedFile)
             selectImage.openImage(imageDialog.selectedFile);
             picture.visible = false;
             selectImage.visible = true;
         }
+    }
+
+    Dialog
+    {
+        id: errorAlert
+        title: "error"
+        Text{
+            text: "Plese open an image"
+        }
+
+        standardButtons: Dialog.Ok
+
+
+
+
 
     }
-}
 
+}
 

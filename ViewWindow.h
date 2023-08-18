@@ -36,6 +36,7 @@ public:
     void setViewFrame(const QImage &newViewFrame);
 
     Q_INVOKABLE void openImage(QUrl url);
+    Q_INVOKABLE bool smoothImage();
 
 signals:
     void frameChanged();

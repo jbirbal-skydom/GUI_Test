@@ -55,9 +55,9 @@ void FileCapture::openVideo()
 //}
 
 
-void FileCapture::setUrl(QString &newUrl)
+void FileCapture::setUrl(QUrl &newUrl)
 {
-    //QString myurl = newUrl.toLocalFile();
-    newUrl.remove("file:///");
-    url = newUrl;
+    QString myurl = newUrl.toLocalFile();
+    //newUrl.remove("file:///");
+    url = myurl;
 }

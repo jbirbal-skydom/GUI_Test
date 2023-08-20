@@ -18,7 +18,7 @@ class threadManager : public QObject
 public:
     explicit threadManager(QObject *parent = nullptr);
 
-    Q_INVOKABLE void runCaptured(QString url);
+    Q_INVOKABLE void runCaptured(QUrl url);
     Q_INVOKABLE void finCaptured();
 
 

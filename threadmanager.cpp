@@ -7,7 +7,7 @@ threadManager::threadManager(QObject *parent)
 
 }
 
-void threadManager::runCaptured(QString url)
+void threadManager::runCaptured(QUrl url)
 {
     capturing = new FileCapture;
     vthread = new QThread();

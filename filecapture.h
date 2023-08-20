@@ -29,7 +29,7 @@ class FileCapture : public QObject
 public:
     explicit FileCapture(QObject *parent = nullptr);
 
-    void setUrl(QString &newUrl);
+    void setUrl(QUrl &newUrl);
 
 signals:
     void newFrameCapture (Mat rawFrame);

@@ -23,7 +23,7 @@ void FileCapture::openVideo()
     while(videoCaptured->read(rawFrame) && !stopVideo){
         i++;
         std::cout<<i<<" seconds " << this << std::endl;
-        QThread::sleep(1);
+        //QThread::sleep(1);
         emit(newFrameCapture(rawFrame));
 
 

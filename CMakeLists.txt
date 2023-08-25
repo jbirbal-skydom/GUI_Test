@@ -7,7 +7,7 @@ project(MediaViewerApp LANGUAGES CXX)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_PREFIX_PATH "E:/Qt/6.6.0/msvc2019_64")
+#set(CMAKE_PREFIX_PATH "E:/Qt/6.6.0/msvc2019_64")
 
 find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick)
 find_package(OpenCV REQUIRED)
